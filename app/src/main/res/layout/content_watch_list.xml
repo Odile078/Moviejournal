@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/back"
+    tools:context=".WatchListActivity">
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="400dp"
+        android:layout_height="250dp"
+        android:src="@drawable/logo2" />
+    <!--android:contentDescription="@string/nav_header_desc"
+    android:paddingTop="@dimen/nav_header_vertical_spacing"-->
+
+
+    <TextView
+        android:id="@+id/movienameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="300dp"
+        android:layout_marginBottom="40dp"
+        android:text="Movie Name : "
+        android:textColor="#300606" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category :"
+        android:id="@+id/moviecategoryTextView"
+        android:layout_marginTop="350dp"
+        android:layout_marginBottom="60dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:textColor="#300606"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Details : "
+        android:id="@+id/moviedetailTextView"
+        android:layout_marginTop="400dp"
+        android:layout_marginBottom="90dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:textColor="#300606"/>
+
+</RelativeLayout>

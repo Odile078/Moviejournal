@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MvStudio</string>
+    <string name="invalid_name">The movie name field should not be empty</string>
+    <string name="invalid_category">Please fill the movie category</string>
+    <string name="invalid_detail">Please fill the movie detail field</string>
+    <string name="open">open</string>
+    <string name="close">open</string>
+</resources>
