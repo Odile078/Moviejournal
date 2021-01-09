@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
     @BindView(R.id.toListFormButton)
     Button toListFormButton;
     @BindView(R.id.ListmoviesButton) Button ListmoviesButton;
+    @BindView(R.id.moviesButton) Button moviesButton;
     Toolbar toolbar;
     DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
 
         toListFormButton.setOnClickListener(this);
         ListmoviesButton.setOnClickListener(this);
+        moviesButton.setOnClickListener(this);
 
         NavigationView navigationView = findViewById((R.id.navi_view));
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -79,6 +81,11 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
             startActivity(intent);
         }
         if(view == ListmoviesButton){
+
+            Intent intent = new Intent(MainActivity.this, MovieActivity.class);
+            startActivity(intent);
+        }
+        if(view == moviesButton){
 
             Intent intent = new Intent(MainActivity.this, MovieActivity.class);
             startActivity(intent);
