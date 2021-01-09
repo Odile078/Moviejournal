@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
         }
         if(view == moviesButton){
 
-            Intent intent = new Intent(MainActivity.this, MovieActivity.class);
+            Intent intent = new Intent(MainActivity.this, PopularMovieListActivity.class);
             startActivity(intent);
         }
 
