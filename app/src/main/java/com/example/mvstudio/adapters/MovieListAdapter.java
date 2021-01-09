@@ -2,6 +2,7 @@ package com.example.mvstudio.adapters;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import com.example.mvstudio.PopularMovieDetailActivity;
 import com.example.mvstudio.R;
 import com.example.mvstudio.models.Result;
 import com.squareup.picasso.Picasso;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -31,7 +35,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
         mContext = context;
         mmovies = movies;
     }
-    public class MovieViewHolder extends RecyclerView.ViewHolder {
+    public class MovieViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener {
         @BindView(R.id.restaurantImageView) ImageView mRestaurantImageView;
         @BindView(R.id.restaurantNameTextView) TextView mNameTextView;
         @BindView(R.id.categoryTextView) TextView mCategoryTextView;
@@ -42,6 +46,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
+            itemView.setOnClickListener(this);
         }
 
         public void bindMovie(Result movie) {
@@ -52,6 +57,16 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
             mNameTextView.setText(movie.getTitle());
             mCategoryTextView.setText(movie.getReleaseDate());
             mRatingTextView.setText("Rating: " + movie.getVoteAverage() + "/10");
+        }
+
+        @Override
+        public void onClick(View view) {
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, PopularMovieDetailActivity.class);
+            intent.putExtra("position", itemPosition);
+            intent.putExtra("movies", Parcels.wrap(mmovies));
+            mContext.startActivity(intent);
+
         }
     }
 
