@@ -1,5 +1,7 @@
 package com.example.mvstudio;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -27,7 +29,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MovieDetailFragment extends Fragment {
+public class MovieDetailFragment extends Fragment  implements View.OnClickListener {
     @BindView(R.id.movieImageView) ImageView mImageLabel;
     @BindView(R.id.movieNameTextView) TextView mNameLabel;
     @BindView(R.id.genreTextView) TextView mCategoriesLabel;
@@ -76,7 +78,32 @@ public class MovieDetailFragment extends Fragment {
         mRatingLabel.setText("Rating: " + mMovie.getVoteAverage() + "/10");
         mPhoneLabel.setText(mMovie.getReleaseDate());
         mAddressLabel.setText(mMovie.getOverview());
+        mWebsiteLabel.setOnClickListener(this);
+        //mPhoneLabel.setOnClickListener(this);
+       // mAddressLabel.setOnClickListener(this);
 
         return view;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view == mWebsiteLabel) {
+            Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("http://www.foxmovies.com/movies/"+mMovie.getTitle()));
+            startActivity(webIntent);
+        }
+        /*if (view == mPhoneLabel) {
+            Intent phoneIntent = new Intent(Intent.ACTION_DIAL,
+                    Uri.parse("tel:" + mMovie.getPhone()));
+            startActivity(phoneIntent);
+        }
+        if (view == mAddressLabel) {
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("geo:" + mMovie.getCoordinates().getLatitude()
+                            + "," + mMovie.getCoordinates().getLongitude()
+                            + "?q=(" + mMovie.getName() + ")"));
+            startActivity(mapIntent);
+        }*/
+
     }
 }
