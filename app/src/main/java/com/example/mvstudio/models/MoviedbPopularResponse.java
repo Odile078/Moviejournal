@@ -1,5 +1,5 @@
 
-package com.example.moviejournal.models;
+package com.example.mvstudio.models;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;
