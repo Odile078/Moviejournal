@@ -6,16 +6,40 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import com.example.mvstudio.adapters.MovieListAdapter;
+import com.example.mvstudio.models.MoviedbPopularResponse;
+import com.example.mvstudio.models.Result;
+import com.example.mvstudio.network.MoviedbApi;
+import com.example.mvstudio.network.MoviedbClient;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.List;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PopularMovieListActivity extends AppCompatActivity {
+    private static final String TAG = PopularMovieListActivity.class.getSimpleName();
+    @BindView(R.id.errorTextView) TextView mErrorTextView;
+    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
+    @BindView(R.id.progressBar) ProgressBar mProgressBar;
+
+    private MovieListAdapter mAdapter;
+    public List<Result> movies;
+
     Toolbar toolbar;
     DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
@@ -33,6 +57,36 @@ public class PopularMovieListActivity extends AppCompatActivity {
         drawer.addDrawerListener(toggle);
         toggle.setDrawerIndicatorEnabled(true);
         toggle.syncState();
+
+        MoviedbApi client = MoviedbClient.getClient();
+        Call<MoviedbPopularResponse> call = client.getMovies();
+        call.enqueue(new Callback<MoviedbPopularResponse>() {
+            @Override
+            public void onResponse(Call<MoviedbPopularResponse> call, Response<MoviedbPopularResponse> response) {
+                hideProgressBar();
+                if (response.isSuccessful()) {
+                    movies = response.body().getResults();
+                    mAdapter = new MovieListAdapter(PopularMovieListActivity.this, movies);
+                    mRecyclerView.setAdapter(mAdapter);
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(PopularMovieListActivity.this);
+                    mRecyclerView.setLayoutManager(layoutManager);
+                    mRecyclerView.setHasFixedSize(true);
+
+                    showRestaurants();
+
+                } else {
+                    showUnsuccessfulMessage();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<MoviedbPopularResponse> call, Throwable t) {
+                hideProgressBar();
+                showFailureMessage();
+
+            }
+        });
 
         NavigationView navigationView = findViewById((R.id.navi_view));
 
@@ -62,5 +116,23 @@ public class PopularMovieListActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void showFailureMessage() {
+        mErrorTextView.setText("Something went wrong. Please check your Internet connection and try again later");
+        mErrorTextView.setVisibility(View.VISIBLE);
+    }
+    private void showUnsuccessfulMessage() {
+        mErrorTextView.setText("Something went wrong. Please try again later");
+        mErrorTextView.setVisibility(View.VISIBLE);
+    }
+    private void showRestaurants() {
+        mRecyclerView.setVisibility(View.VISIBLE);
+    }
+    /* private void showRestaurants() {
+         mListView.setVisibility(View.VISIBLE);
+         mLocationTextView.setVisibility(View.VISIBLE); }*/
+    private void hideProgressBar() {
+        mProgressBar.setVisibility(View.GONE);
     }
 }
