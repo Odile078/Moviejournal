@@ -75,7 +75,7 @@ public class ListFormActivity extends AppCompatActivity  implements View.OnClick
 
                 }
                 else if(item.getItemId()==R.id.nav_movie){
-                    startActivity(new Intent(ListFormActivity.this, MovieActivity.class));
+                    startActivity(new Intent(ListFormActivity.this,  PopularMovieListActivity.class));
 
                 }
                 else if(item.getItemId()==R.id.nav_watchlist){

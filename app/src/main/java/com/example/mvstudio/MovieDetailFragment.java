@@ -92,18 +92,7 @@ public class MovieDetailFragment extends Fragment  implements View.OnClickListen
                     Uri.parse("http://www.foxmovies.com/movies/"+mMovie.getTitle()));
             startActivity(webIntent);
         }
-        /*if (view == mPhoneLabel) {
-            Intent phoneIntent = new Intent(Intent.ACTION_DIAL,
-                    Uri.parse("tel:" + mMovie.getPhone()));
-            startActivity(phoneIntent);
-        }
-        if (view == mAddressLabel) {
-            Intent mapIntent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("geo:" + mMovie.getCoordinates().getLatitude()
-                            + "," + mMovie.getCoordinates().getLongitude()
-                            + "?q=(" + mMovie.getName() + ")"));
-            startActivity(mapIntent);
-        }*/
+
 
     }
 }

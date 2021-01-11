@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
 
                 }
                 else if(item.getItemId()==R.id.nav_movie){
-                    startActivity(new Intent(MainActivity.this, MovieActivity.class));
+                    startActivity(new Intent(MainActivity.this,  PopularMovieListActivity.class));
 
                 }
                 else if(item.getItemId()==R.id.nav_watchlist){

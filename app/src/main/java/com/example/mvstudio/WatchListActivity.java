@@ -52,7 +52,7 @@ public class WatchListActivity extends AppCompatActivity {
 
                 }
                 else if(item.getItemId()==R.id.nav_movie){
-                    startActivity(new Intent(WatchListActivity.this, MovieActivity.class));
+                    startActivity(new Intent(WatchListActivity.this,  PopularMovieListActivity.class));
 
                 }
                 else if(item.getItemId()==R.id.nav_watchlist){

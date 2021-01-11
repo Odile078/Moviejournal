@@ -81,7 +81,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="View on Yelp"
+                    android:text="Check on TMDB"
                     android:id="@+id/websiteTextView"
                     android:drawableLeft="@drawable/baseline_exit_to_app_white_24dp"
                     android:drawablePadding="4dp"
@@ -94,9 +94,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="(503) 223-1282"
+                    android:text="12-05-2020"
                     android:id="@+id/phoneTextView"
-                    android:drawableLeft="@drawable/ic_call_white_24dp"
+                    android:drawableLeft="@drawable/baseline_assignment_turned_in_white_24dp"
                     android:drawablePadding="4dp"
                     android:textColor="@color/black"
                     android:textSize="15sp"
@@ -108,7 +108,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="123 SW Best Ever Ave. Portland, Oregon, 97222"
-                    android:drawableLeft="@drawable/ic_map_white_24dp"
+                    android:drawableLeft="@drawable/baseline_map_white_24dp"
                     android:drawablePadding="4dp"
                     android:id="@+id/addressTextView"
                     android:textColor="@color/black"
@@ -121,7 +121,7 @@
 
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:text="Save Movie"
                 android:id="@+id/saveMovieButton"
                 android:layout_alignParentBottom="true"

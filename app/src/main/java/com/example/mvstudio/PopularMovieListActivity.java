@@ -98,7 +98,7 @@ public class PopularMovieListActivity extends AppCompatActivity {
 
                 }
                 else if(item.getItemId()==R.id.nav_movie){
-                    startActivity(new Intent(PopularMovieListActivity.this, MovieActivity.class));
+                    startActivity(new Intent(PopularMovieListActivity.this, PopularMovieListActivity.class));
 
                 }
                 else if(item.getItemId()==R.id.nav_watchlist){
